@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# cx file: make [file/or files which in dir] excuteble
+
+case $# in
+  0) echo "Usage: cx file/dir" 1>&2; exit 1 ;;
+  1) # 只有一个参数
+    if [ -f $1 ]; then  # 是文件
+      chmod u+x $1;
+      exit 0;
+    elif [ -d $1 ]; then   # 是目录
+      for i in $(ls $1); do
+        chmod u+x $1/$i;
+      done
+      exit 0
+    else
+      echo "Usage: cx file/dir" 1>&2; 
+      exit 2; 
+    fi
+    ;;
+  *) # 多个参数 
+    for file in $@; do
+      if [ -f $file ]; then
+        chmod u+x $file;
+      else
+        echo "$file is not a file";
+      fi
+    done
+    exit 0;
+    ;;
+esac

@@ -1,0 +1,17 @@
+[user]
+	name = OuO
+	email = mapan1984@outlook.com
+[core]
+	editor = vim
+	quotepath = false
+[color]
+	ui = true
+[alias]
+    co = checkout
+    ci = commit
+    br = branch
+    st = status
+    ss = stash
+    mg = merge --no--ff
+    unstage = reset HEAD --
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
