@@ -12,12 +12,24 @@
 #     -c mesg
 
 # 需要同步的配置文件
-config_file='.profile .bash_profile .bashrc bin .gitconfig'
+config_file='.profile .bash_profile .bashrc bin .gitconfig .gitignore'
 
-function err(){  # 提示错误函数
+# 错误提示函数
+function err()
+{
   echo "[$(date)]: $@" 1>&2
 }
 
+# 构造.gitignore函数
+function ignore()
+{
+  echo "" > .gitignore
+  # get_gitignore为另一个可执行文件(~/bin/get_gitignore)
+  get_gitignore >> .gitignore
+}
+
+
+# 进行参数数量判断与获取
 case $# in
   0) err 'Usage: up -operation [mesg]'; exit 1 ;;
   1) 
@@ -28,6 +40,10 @@ case $# in
     mesg=$2;;
 esac
 
+# 构造.gitignore
+ignore
+
+# 根据operation执行操作
 case $operation in
   -a*) git add ${config_file} ;;
   -c*) git commit -m ${mesg} ;;
