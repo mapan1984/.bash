@@ -12,6 +12,11 @@ if [ -f /etc/bashrc ]; then
   . /etc/bashrc
 fi
 
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+  PATH="$HOME/bin:$PATH"
+fi
+
 ################ Shell Options ########################
 #
 # See man bash for more options...
@@ -165,10 +170,21 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # some more ls aliases
+alias l='ls -CF'
 alias ll='ls -alF'
 alias la='ls -A'
-alias l='ls -CF'
-
+#
+# Misc :)
+alias grep='grep --color -n'                  # show differences in colour, show num_line
+alias less='less -r'                          # raw control characters
+alias whence='type -a'                        # where, of a sort
+#
+# Some shortcuts for different directory listings
+alias ls='ls -hF --color=tty'                 # classify files in colour
+alias dir='ls --color=auto --format=vertical'
+alias vdir='ls --color=auto --format=long'
+alias wch='which -a'
+#
 # Interactive operation...
 #alias rm='rm -i'
 alias cp='cp -i'
@@ -177,22 +193,6 @@ alias mv='mv -i'
 # Default to human readable figures
 alias df='df -h'
 alias du='du -h -a'
-#
-# Misc :)
-alias less='less -r'                          # raw control characters
-alias whence='type -a'                        # where, of a sort
-alias grep='grep --color -n'                  # show differences in colour, show num_line
-alias egrep='egrep --color=auto'              # show differences in colour
-alias fgrep='fgrep --color=auto'              # show differences in colour
-#
-# Some shortcuts for different directory listings
-alias ls='ls -hF --color=tty'                 # classify files in colour
-alias l='ls -CF'                              #
-alias ll='ls -l'                              # long list
-alias la='ls -A'                              # all but . and ..
-alias dir='ls --color=auto --format=vertical'
-alias vdir='ls --color=auto --format=long'
-alias wch='which -a'
 #
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert

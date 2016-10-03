@@ -5,8 +5,8 @@
 
 _posts=/mnt/e/mapan1984/_posts # 文章目录
 
-err(){  # 提示错误函数
-  echo "[$(date)]: $@" >&2
+function err(){  # 提示错误函数
+  echo "[$(date)]: $@" 1>&2
 }
 
 case $# in
@@ -15,7 +15,7 @@ case $# in
   2) 
     categories=$1; 
     filename=$2; 
-    set `date "+%Y %B %d"`; y=$1; m=$2; d=$3; # havr categories args; use today
+    set `date "+%Y %B %d"`; y=$1; m=$2; d=$3; # have categories args; use today
     case $categories in
       -m*) categories=manual ;;
       -n*) categories=network ;;

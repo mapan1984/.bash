@@ -2,15 +2,24 @@
 
 ## 同步我的bash on windows配置
 
+# use: up -operation [mesg]
+# operation:
+#           -a: add
+#           -c: commit
+#           -push: push
+#           -pull: pull
+# mesg:
+#     -c mesg
+
 # 需要同步的配置文件
 config_file='.profile .bash_profile .bashrc bin .gitconfig'
 
-err(){  # 提示错误函数
-  echo "[$(date)]: $@" >&2
+function err(){  # 提示错误函数
+  echo "[$(date)]: $@" 1>&2
 }
 
 case $# in
-  0) echo 'Usage: up [-operation] [mesg]' 1>&2; exit 1 ;;
+  0) err 'Usage: up -operation [mesg]'; exit 1 ;;
   1) 
     operation=$1;
     mesg="";;
@@ -22,7 +31,7 @@ esac
 case $operation in
   -a*) git add ${config_file} ;;
   -c*) git commit -m ${mesg} ;;
-  -pus*) git push origin master ;;
-  -pul*) git pull origin master ;;
-  *) err 'Usage: up [-a|-c|-pus|-pul] [mesg]'; exit 2 ;;
+  -push) git push origin master ;;
+  -pull) git pull origin master ;;
+  *) err 'Usage: up -operation [mesg]'; exit 2 ;;
 esac

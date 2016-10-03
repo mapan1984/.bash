@@ -3,10 +3,6 @@
 
 # source the users bashrc if it exists
 # Get the aliases and functions
-
-# if [ -f ~/.bashrc ]; then
-#     . ~/.bashrc
-# fi
 if [ -f "${HOME}/.bashrc" ] ; then
   source "${HOME}/.bashrc"
 fi
