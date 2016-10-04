@@ -12,7 +12,7 @@
 #     -c mesg
 
 # 需要同步的配置文件
-config_file='.profile .bash_profile .bashrc bin .gitconfig .gitignore'
+config_file='.bash_profile .bashrc .bash_logout bin .gitconfig .gitignore'
 
 # 错误提示函数
 function err()
@@ -46,7 +46,7 @@ ignore
 # 根据operation执行操作
 case $operation in
   -a*) git add ${config_file} ;;
-  -c*) git commit -m ${mesg} ;;
+  -c*) git commit -m "${mesg}" ;;
   -push) git push origin master ;;
   -pull) git pull origin master ;;
   *) err 'Usage: up -operation [mesg]'; exit 2 ;;

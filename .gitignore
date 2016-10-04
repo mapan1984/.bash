@@ -1,12 +1,16 @@
 
 .bash_history
-.bash_logout
 .gem
 .gemrc
 .git
+.gnupg
+.mkshrc
 .python_history
+.rvm
 .ssh
 .vim
 .viminfo
 .viminfo.tmp
 .vimrc
+.zlogin
+.zshrc

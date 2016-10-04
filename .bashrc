@@ -1,4 +1,6 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
+# 当shell是交互式登录和非登录shell时都会运行，如用图形界面打开新终端，使用su切换用户
+#                                             如系统启动，远程登录，使用su切换用户
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 
 # If not running interactively, don't do anything
@@ -9,13 +11,20 @@ esac
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-  . /etc/bashrc
+  source /etc/bashrc
 fi
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
-  PATH="$HOME/bin:$PATH"
+  export PATH="$PATH:$HOME/bin"
 fi
+
+########## RVM #############
+# Add RVM to PATH for scripting
+export PATH="$PATH:$HOME/.rvm/bin"
+#
+# Load RVM into a shell session *as a function*
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 ################ Shell Options ########################
 #
@@ -215,6 +224,9 @@ alias bg='cd /mnt/e/mapan1984/'
 #
 ################ Umask ############### 
 #
+## the default umask is set in /etc/profile; for setting the umask
+## for ssh logins, install and configure the libpam-umask package.
+#umask 022
 ## /etc/profile sets 022, removing write perms to group + others.
 ## Set a more restrictive umask: i.e. no exec perms for others:
 #umask 027
