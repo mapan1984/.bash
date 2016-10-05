@@ -55,16 +55,6 @@ shopt -s globstar
 
 ################ Completion options ####################
 #
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
 # These completion tuning parameters change the default behavior of bash_completion:
 #
 # Define to access remotely checked-out files over passwordless ssh for CVS
@@ -79,6 +69,17 @@ fi
 # Uncomment to turn on programmable completion enhancements.
 # Any completions you add in ~/.bash_completion are sourced last.
 #[[ -f /etc/bash_completion ]] && . /etc/bash_completion
+#
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
 
 ################ History Options #################
 #
@@ -154,7 +155,7 @@ stty -ixon
 #    ;;
 #esac
 #
-# git prompt
+## git prompt
 parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
@@ -208,12 +209,16 @@ alias du='du -h -a'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 #
 #### user specific aliases and functions
+#
 # 查看函数，-s指定man的section, 2,3指的是Systen Call和Library Function
 alias see='man -s2,3'
-#
+# 常用操作
 alias install='sudo apt-get install'
 alias vi='vim'
-#
+alias tgz='tar zxvf'
+# 解决jekyll在bash on windows上的启动错误
+alias jserver='jekyll server --force_polling'
+# 常用文件地址
 alias bin='cd ~/bin'
 alias ev='cd ~/.vim/'
 alias c='cd /mnt/c'

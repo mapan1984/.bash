@@ -12,7 +12,7 @@
 #     -c mesg
 
 # 需要同步的配置文件
-config_file='.bash_profile .bashrc .bash_logout bin .gitconfig .gitignore'
+config_file="$(up_helper config)"
 
 # 错误提示函数
 function err()
@@ -25,7 +25,7 @@ function ignore()
 {
   echo "" > .gitignore
   # get_gitignore为另一个可执行文件(~/bin/get_gitignore)
-  get_gitignore >> .gitignore
+  up_helper ignore >> .gitignore
 }
 
 
@@ -40,12 +40,11 @@ case $# in
     mesg=$2;;
 esac
 
-# 构造.gitignore
-ignore
-
 # 根据operation执行操作
 case $operation in
-  -a*) git add ${config_file} ;;
+  -a*) 
+    ignore; # 构造.gitignore
+    git add --all ${config_file} ;;
   -c*) git commit -m "${mesg}" ;;
   -push) git push origin master ;;
   -pull) git pull origin master ;;
