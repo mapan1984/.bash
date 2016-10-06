@@ -1,10 +1,12 @@
 
+.bash_profile .bashrc .bash_logout bin .gitconfig .gitignore .zlogin .zshrc
 .bash_history
 .gem
 .gemrc
 .git
 .gnupg
 .mkshrc
+.oh-my-zsh
 .python_history
 .rvm
 .ssh
@@ -12,6 +14,9 @@
 .viminfo
 .viminfo.tmp
 .vimrc
-.zlogin
-.zshrc
+.zcompdump
+.zcompdump-MAPAN-PC-5.0.2
+.zsh-update
+.zsh_history
+.zshrc.pre-oh-my-zsh
 sources

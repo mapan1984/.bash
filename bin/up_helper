@@ -7,7 +7,10 @@ import os
 import sys
 
 # 需要同步的配置文件
-config_file='.bash_profile .bashrc .bash_logout bin .gitconfig .gitignore'
+config_file=('.bash_profile .bashrc .bash_logout'
+             ' bin .gitconfig .gitignore'
+             ' .zlogin .zshrc')
+print(config_file)
 
 def ignore_file():
     global confing_file

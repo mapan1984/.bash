@@ -80,6 +80,9 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+#
+## Git-Completion for bash
+source ~/bin/git-completion.bash
 
 ################ History Options #################
 #
@@ -156,10 +159,12 @@ stty -ixon
 #esac
 #
 ## git prompt
-parse_git_branch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-}
-export PS1="\n""\e[1;36m\u\e[0m""@""\e[1;32m\h\e[0m"": ""\e[1;33m\W\e[0m""\e[1;31m\$(parse_git_branch)\e[0m""\n""$ "
+#parse_git_branch() {
+#  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+#}
+source ~/bin/git-prompt.sh
+export GIT_PS1_SHOWDIRTYSTATE=1
+export PS1="\n""\e[1;36m\u\e[0m""@""\e[1;32m\h\e[0m"": ""\e[1;33m\W\e[0m""\e[1;31m\$(__git_ps1 ' (%s)')\e[0m""\n""$ "
 
 ################# Aliases #################
 #
