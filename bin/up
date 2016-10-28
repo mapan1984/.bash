@@ -1,8 +1,9 @@
 #!/bin/bash
 
-## 同步我的bash on windows配置
+## Synchronize my config of bash on windows
 
-# use: up -operation [mesg]
+# Usage: up -operation [mesg]
+#        need help from ~/bin/up_helper
 # operation:
 #           -a: add
 #           -c: commit
@@ -11,42 +12,42 @@
 # mesg:
 #     -c mesg
 
-# 需要同步的配置文件
+# Config file needed to Synchronize
 config_file="$(up_helper config)"
 
-# 错误提示函数
+# Error tip
 function err()
 {
   echo "[$(date)]: $@" 1>&2
 }
 
-# 构造.gitignore函数
-function ignore()
+# Generate .gitignore
+function genetate_gitignore()
 {
-  echo "" > .gitignore
-  # get_gitignore为另一个可执行文件(~/bin/get_gitignore)
-  up_helper ignore >> .gitignore
+  up_helper ignore > ~/.gitignore
 }
 
 
-# 进行参数数量判断与获取
+# Patameter judgment and acquistion
 case $# in
-  0) err 'Usage: up -operation [mesg]'; exit 1 ;;
   1) 
     operation=$1;
     mesg="";;
   2) 
     operation=$1; 
     mesg=$2;;
+  *) err 'Usage: up -operation [mesg]'; exit 1 ;;
 esac
 
-# 根据operation执行操作
+# Git Operation
 case $operation in
   -a*) 
-    ignore; # 构造.gitignore
+    genetate_gitignore;
     git add --all ${config_file} ;;
   -c*) git commit -m "${mesg}" ;;
   -push) git push origin master ;;
   -pull) git pull origin master ;;
-  *) err 'Usage: up -operation [mesg]'; exit 2 ;;
+  *) err 'Usage: up -operation [mesg]
+                 operation must in [-add, -commit [mesg], -pull, -push]';
+     exit 2 ;;
 esac

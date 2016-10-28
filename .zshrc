@@ -1,19 +1,18 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$PATH:$HOME/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/mapan/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="bira"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
@@ -83,7 +82,8 @@ export LANG=en_US.UTF-8
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#### user specific aliases and functions
+
+##### user specific aliases and functions
 #
 # 查看函数，-s指定man的section, 2,3指的是Systen Call和Library Function
 alias see='man -s2,3'
@@ -100,17 +100,31 @@ alias c='cd /mnt/c'
 alias e='cd /mnt/e'
 alias d='cd /mnt/d'
 alias f='cd /mnt/f'
-alias bg='cd /mnt/e/mapan1984/'
-#
+alias bg='cd /mnt/d/mapan1984/'
+
+# 设置文件默认用vim打开
+alias -s c=vim
+alias -s py=vim
+alias -s js=vim
+alias -s md=vim
+alias -s html=vim
+alias -s css=vim
+alias -s txt=vim
+# 打开压缩文件
+alias -s gz='tar -xzvf'
+alias -s tgz='tar -xzvf'
+alias -s zip='unzip'
+alias -s bz2='tar -xjvf'
 ## Git-Completion
 #source ~/bin/git-completion.zsh
 #
 ## Git-Prompt
-setopt prompt_subst
-source ~/bin/git-prompt.sh
-export RPROMPT=$'$(__git_ps1 "%s")'
-# 禁止<c-s>挂起终端，<c-q>恢复终端
+#setopt prompt_subst
+#source ~/bin/git-prompt.sh
+#export RPROMPT=$'$(__git_ps1 "%s")'
+
+## 禁止<c-s>挂起终端，<c-q>恢复终端
 stty -ixon
-#
+
 ## Add RVM to PATH for scripting
 export PATH="$PATH:$HOME/.rvm/bin"

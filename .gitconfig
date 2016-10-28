@@ -1,5 +1,5 @@
 [user]
-	name = OuO
+	name = mapan1984
 	email = mapan1984@outlook.com
 [core]
 	editor = vim
@@ -8,11 +8,12 @@
 [color]
 	ui = true
 [alias]
+    br = branch
     co = checkout
     ci = commit
-    br = branch
+    sb = submodule
     st = status
     ss = stash
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     mg = merge --no--ff
     unstage = reset HEAD --
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative

@@ -186,8 +186,8 @@ fi
 
 # some more ls aliases
 alias l='ls -CF'
-alias ll='ls -alF'
 alias la='ls -A'
+alias ll='ls -alF'
 #
 # Misc :)
 alias grep='grep --color -n'                  # show differences in colour, show num_line

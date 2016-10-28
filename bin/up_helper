@@ -10,21 +10,19 @@ import sys
 config_file=('.bash_profile .bashrc .bash_logout'
              ' bin .gitconfig .gitignore'
              ' .zlogin .zshrc')
-print(config_file)
 
 def ignore_file():
-    global confing_file
     for file in os.listdir('/home/mapan/'):
-        if file not in config_file.split(" "):
+        if file not in config_file.split():
             print(file)
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: up_helper [ignore|config]")
+        print("usage: up_helper [ignore|config]")
     else:
-        if(sys.argv[1] == "ignore"):
+        if sys.argv[1] == "ignore" :
             ignore_file()
-        elif(sys.argv[1] == "config"):
+        elif sys.argv[1] == "config" :
             print(config_file)
         else:
-            print("Usage: up_helper [ignore|config]")
+            print("usage: up_helper [ignore|config]")
