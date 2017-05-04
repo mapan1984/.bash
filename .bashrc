@@ -149,10 +149,11 @@ stty -ixon
 #parse_git_branch() {
 #  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 #}
-source ${HOME}/bin/git-prompt.sh
-export GIT_PS1_SHOWDIRTYSTATE=1
-# \u: username; \h: hostname; \w: path;
-export PS1="\n""\e[1;36m\u\e[0m""@""\e[1;32m\h\e[0m"": ""\e[1;33m\W\e[0m""\e[1;31m\$(__git_ps1 ' (%s)')\e[0m""\n""$ "
+#source ${HOME}/bin/git-prompt.sh
+#export GIT_PS1_SHOWDIRTYSTATE=1
+## \u: username; \h: hostname; \w: path;
+#export PS1="\n""\e[1;36m\u\e[0m""@""\e[1;32m\h\e[0m"": ""\e[1;33m\W\e[0m""\e[1;31m\$(__git_ps1 ' (%s)')\e[0m""\n""$ "
+source ${HOME}/bin/prompt.sh
 
 ################# Aliases #################
 #
