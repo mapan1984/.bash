@@ -16,4 +16,4 @@ SELECT="if [ \$? = 0 ]; then echo \"${SMILEY}\"; else echo \"${FROWNY}\"; fi"
 
 source ${HOME}/bin/git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
-export PS1="${NEWLINE}${CYAN}${USER}${NORMAL}@${GREEN}${HOST} \`${SELECT}\` ${YELLOW}${PATH_}${RED}\$(__git_ps1 ' (%s)')${NORMAL}${NEWLINE}$ "
+export PS1="${NEWLINE}${CYAN}${USER}${NORMAL}@${GREEN}${HOST} \`${SELECT}\` ${YELLOW}${PATH_}${RED}\`__git_ps1 ' (%s)'\`${NORMAL}${NEWLINE}$ "
