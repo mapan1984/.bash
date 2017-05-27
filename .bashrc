@@ -204,7 +204,7 @@ alias see='man -s2,3'
 alias vi='vim'
 # 常用文件地址
 alias bin='cd ~/bin'
-alias ev='cd ~/.vim/'
+alias vc='cd ~/.vim/'
 #
 ################ Umask ###############
 #

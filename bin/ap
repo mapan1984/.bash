@@ -3,7 +3,7 @@
 # 把任何地方的文章按jekyll文章命名要求命名，
 # 并移至我的blog文章目录下
 
-_posts=${BREAK}e/mapan1984/_posts # 文章目录
+_posts=${BREAK}d/mapan1984/_posts # 文章目录
 
 function err(){  # 提示错误函数
   echo "[$(date)]: $@" 1>&2
@@ -17,6 +17,7 @@ case $# in
     filename=$2; 
     set `date "+%Y %B %d"`; y=$1; m=$2; d=$3; # have categories args; use today
     case $categories in
+      -a*) categories=algorithm ;;
       -m*) categories=manual ;;
       -n*) categories=network ;;
       -p*) categories=program ;;
