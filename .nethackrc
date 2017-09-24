@@ -1,0 +1,25 @@
+### show
+OPTIONS=showexp,showscore,time
+OPTIONS=eight_bit_tty,hpmon,showrace
+OPTIONS=fruit:slime mold,boulder:0
+OPTIONS=msg_window:reversed
+OPTIONS=lit_corridor
+OPTIONS=hilite_pet
+
+### color
+OPTIONS=color,menucolors
+
+MENUCOLOR="blessed"=cyan&bold
+MENUCOLOR="cursed"=orange&bold
+MENUCOLOR="uncursed"=green
+
+MENUCOLOR="loadstone\|wand \(of\|called\) cancellation"=underline
+MENUCOLOR="Amulet of Yendor named"=magenta                           # color only the real Amulet
+MENUCOLOR="gold piece"=yellow
+
+MENUCOLOR="[a-zA-Z] - [a-zA-Z ]+[ ]+[0-9]+\*[ ]+[a-z]+[ ]+[0-9]+%"=magenta  # forgotten spell
+
+
+### behavior
+OPTIONS=!autopickup,autodig,autoquiver
+OPTIONS=number_pad:0

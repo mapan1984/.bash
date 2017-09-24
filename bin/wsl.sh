@@ -3,6 +3,7 @@ export BREAK='/mnt/'
 
 # 简化命令
 alias tgz='tar zxvf'
+alias nhm='nethack -u mapan'
 alias install='sudo apt install'
 
 # 解决jekyll在bash on windows上的启动错误
