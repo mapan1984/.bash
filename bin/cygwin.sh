@@ -6,7 +6,7 @@ alias c='cd /cygdrive/c/'
 alias d='cd /cygdrive/d/'
 alias e='cd /cygdrive/e/'
 alias f='cd /cygdrive/f/'
-alias al='cd /cygdrive/d/algorithms/'
+alias al='cd /cygdrive/d/algo/'
 alias bg='cd /cygdrive/d/mapan1984/'
 
 # export PATH='/usr/bin:/usr/lib/lapack:/usr/local/bin:/cygdrive/c/WINDOWS'
