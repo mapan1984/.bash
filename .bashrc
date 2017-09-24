@@ -22,6 +22,9 @@ fi
 # Don't use ^D to exit
 # set -o ignoreeof
 #
+# 禁止<c-s>挂起终端，<c-q>恢复终端
+stty -ixon
+#
 # Use case-insensitive filename globbing
 shopt -s nocaseglob
 #
@@ -73,20 +76,20 @@ source ${HOME}/bin/git-completion.bash
 ################ History Options #################
 #
 # Don't put duplicate lines in the history.
-# export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
+export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 #
 # Ignore some controlling instructions
 # HISTIGNORE is a colon-delimited list of patterns which should be excluded.
 # The '&' is a special pattern which suppresses duplicate entries.
 # export HISTIGNORE=$'[ \t]*:&:[fb]g:exit'
-# export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls' # Ignore the ls command as well
+export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls:cd [a-zA-Z0-9_.*]*:mv [a-zA-Z0-9_.*]*:vi:c:d:e:f' # Ignore the ls command as well
 #
 # Whenever displaying the prompt, write the previous line to disk
 # export PROMPT_COMMAND="history -a"
 #
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-# HISTCONTROL=ignoreboth
+HISTCONTROL=ignoreboth
 #
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 # HISTSIZE=1000
@@ -96,8 +99,6 @@ source ${HOME}/bin/git-completion.bash
 # 终端默认支持256色
 export TERM=xterm-256color
 
-# 禁止<c-s>挂起终端，<c-q>恢复终端
-stty -ixon
 #
 # make less more friendly for non-text input files, see lesspipe(1)
 # [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
