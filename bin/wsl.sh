@@ -10,11 +10,7 @@ alias install='sudo apt install'
 # alias jserver='jekyll server --force_polling'
 
 # 常用文件地址
-alias c='cd /mnt/c'
-alias e='cd /mnt/e'
-alias d='cd /mnt/d'
-alias f='cd /mnt/f'
-alias bg='cd /mnt/d/mapan1984/'
+source ~/bin/paths.sh;
 
 ### delete `/mnt/*` form PATH
 # oldIFS=$IFS

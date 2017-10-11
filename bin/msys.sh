@@ -1,10 +1,5 @@
 ### 链接到其他盘的目录
 export BREAK='/'
 
-# my categery
-alias c='cd /c/'
-alias d='cd /d/'
-alias e='cd /e/'
-alias f='cd /f/'
-alias al='cd /d/algo/'
-alias bg='cd /d/mapan1984/'
+# 常用文件地址
+source ~/bin/paths.sh;
