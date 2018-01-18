@@ -13,21 +13,21 @@ alias install='sudo apt install'
 source ~/bin/paths.sh;
 
 ### delete `/mnt/*` form PATH
-# oldIFS=$IFS
-# IFS=:
-#
-# oldPATH=$PATH
-# PATH=''
-# for path in ${oldPATH}; do
-#   if [[ ${path} =~ ^/[^m].*$ ]]; then
-#     PATH+="${path};"
-#   fi
-# done
-#
-# IFS=$oldIFS
-#
-# PATH=${PATH//;/:}
-# PATH=${PATH%%:}
+oldIFS=$IFS
+IFS=:
+
+oldPATH=$PATH
+PATH=''
+for path in ${oldPATH}; do
+  if [[ ${path} =~ ^/[^m].*$ ]]; then
+    PATH+="${path};"
+  fi
+done
+
+IFS=$oldIFS
+
+PATH=${PATH//;/:}
+PATH=${PATH%%:}
 #echo $PATH
 
 ### 默认开启tmux
@@ -42,3 +42,7 @@ source ~/bin/paths.sh;
 #     tmux new-window -c "$PWD" 2>/dev/null && exec tmux a
 #     exec tmux
 # }
+
+### go
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=/mnt/d/goutils
