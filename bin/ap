@@ -3,7 +3,7 @@
 # 把任何地方的文章按jekyll文章命名要求命名，
 # 并移至我的blog文章目录下
 
-_posts=${BREAK}d/mapan1984/_posts # 文章目录
+_posts=${BREAK}c/Users/mapan/Code/mapan1984/_posts # 文章目录
 
 function err(){  # 提示错误函数
   echo "[$(date)]: $@" 1>&2
@@ -12,9 +12,9 @@ function err(){  # 提示错误函数
 case $# in
   0) echo 'Usage: ap [-categories] filename' 1>&2; exit 1 ;;
   1) err "Usage: ap [-categories] filename"; exit 2 ;;
-  2) 
-    categories=$1; 
-    filename=$2; 
+  2)
+    categories=$1;
+    filename=$2;
     set `date "+%Y %B %d"`; y=$1; m=$2; d=$3; # have categories args; use today
     case $categories in
       -a*) categories=algorithm ;;

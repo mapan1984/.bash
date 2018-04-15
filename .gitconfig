@@ -5,6 +5,8 @@
 	editor = vim
 	quotepath = false
 	autocrlf = input
+	fileMode = false
+	excludesfile = /home/mapan/.gitignore_global
 [color]
 	ui = true
 [alias]
