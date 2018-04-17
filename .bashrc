@@ -30,6 +30,8 @@ shopt -s nocaseglob
 #
 # Make bash append rather than overwrite the history on disk
 shopt -s histappend
+# Put histroy command onto command line without executing it
+#shopt -s histverify
 #
 # When changing directory small typos can be ignored by bash
 # for example, cd /vr/lgo/apaache would find /var/log/apache
@@ -75,25 +77,24 @@ source ${HOME}/bin/git-completion.bash
 
 ################ History Options #################
 #
-# Don't put duplicate lines in the history.
-export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
-#
 # Ignore some controlling instructions
 # HISTIGNORE is a colon-delimited list of patterns which should be excluded.
 # The '&' is a special pattern which suppresses duplicate entries.
 # export HISTIGNORE=$'[ \t]*:&:[fb]g:exit'
-export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls:cd [a-zA-Z0-9_.*]*:mv [a-zA-Z0-9_.*]*:vi:c:d:e:f' # Ignore the ls command as well
+export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls:l:cd:cd [a-zA-Z0-9_.*]*:mv [a-zA-Z0-9_.*]*:vi:vim'
 #
 # Whenever displaying the prompt, write the previous line to disk
-# export PROMPT_COMMAND="history -a"
+export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 #
 # don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
-HISTCONTROL=ignoreboth
+# export HISTCONTROL=ignoredups,ignorespace
+export HISTCONTROL=ignoreboth
 #
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-# HISTSIZE=1000
-# HISTFILESIZE=2000
+# here I set it unlimited
+HISTSIZE=
+HISTFILESIZE=
+HISTTIMEFORMAT="[%F %T] "
 
 ################# Shell show #############
 # 终端默认支持256色
