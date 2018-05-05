@@ -13,6 +13,11 @@ if [ -d "${HOME}/bin" ] ; then
   PATH="${PATH}:${HOME}/bin"
 fi
 
+# Python global pip install package
+if [ -d "${HOME}/.local/bin" ] ; then
+  PATH="${PATH}:${HOME}/.local/bin"
+fi
+
 # Set MANPATH so it includes users' private man if it exists
 # if [ -d "${HOME}/man" ]; then
 #   MANPATH="${HOME}/man:${MANPATH}"

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+cygwin=false;
+case "$(uname)" in
+  CYGWI*) cygwin=true ;;
+  Linux*) wsl=true ;;
+  MINGW*) msys=true ;;
+esac
+
+if [[ -z $1 ]]; then
+  XPATH=.  # 缺省是当前目录
+else
+  XPATH=$1
+  if ${cygwin}; then
+    XPATH=$(cygpath -C ANSI -w ${XPATH});
+  fi
+fi
+
+explorer.exe $XPATH

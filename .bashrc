@@ -81,10 +81,10 @@ source ${HOME}/bin/git-completion.bash
 # HISTIGNORE is a colon-delimited list of patterns which should be excluded.
 # The '&' is a special pattern which suppresses duplicate entries.
 # export HISTIGNORE=$'[ \t]*:&:[fb]g:exit'
-export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls:l:cd:cd [a-zA-Z0-9_.*]*:mv [a-zA-Z0-9_.*]*:vi:vim'
+export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:l:ls:ls [a-zA-Z0-9_.*]*:cd:cd [a-zA-Z0-9_.*]*:mkdir [a-zA-Z0-9_.*]*:vi:vim'
 #
 # Whenever displaying the prompt, write the previous line to disk
-export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+#export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 #
 # don't put duplicate lines or lines starting with space in the history.
 # export HISTCONTROL=ignoredups,ignorespace
@@ -94,7 +94,9 @@ export HISTCONTROL=ignoreboth
 # here I set it unlimited
 HISTSIZE=
 HISTFILESIZE=
-HISTTIMEFORMAT="[%F %T] "
+#
+# let `history` command show time
+#HISTTIMEFORMAT="[%F %T]: "
 
 ################# Shell show #############
 # 终端默认支持256色

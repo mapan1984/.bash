@@ -4,3 +4,5 @@
 .tern-project
 .ycm_extra_conf.py
 .flake8
+.tags
+.eslintrc.js

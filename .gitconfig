@@ -13,13 +13,14 @@
     br = branch
     co = checkout
     ci = commit
-    sb = submodule
+	d = difftool
     st = status
     ss = stash
+    sb = submodule
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     mg = merge --no--ff
     unstage = reset HEAD --
-	d = difftool
+    upstream-merge = !"git fetch origin -v && git fetch upstream -v && git merge upstream/master && git push"
 [diff]
 	tool = vimdiff
 [difftool]

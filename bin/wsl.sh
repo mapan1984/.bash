@@ -1,16 +1,16 @@
 ### 链接到其他盘的目录
-export BREAK='/mnt/'
+export HARDDISK='/mnt/'
+export CODEDIR="${HARDDISK}c/Users/mapan/Code/"
 
 # 简化命令
 alias tgz='tar zxvf'
 alias nhm='nethack -u mapan'
 alias install='sudo apt install'
-alias code="cd ${BREAK}c/Users/mapan/Code"
 
 # 解决jekyll在bash on windows上的启动错误
 # alias jserver='jekyll server --force_polling'
 
-# 常用文件地址
+# 常用文件地址别名
 source ~/bin/paths.sh;
 
 ### delete `/mnt/*` form PATH
