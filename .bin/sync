@@ -1,0 +1,32 @@
+#!/bin/bash
+#
+# Sync project dir
+
+
+#######################################
+# Cleanup files from the backup dir
+# Globals:
+#   BACKUP_DIR
+#   ORACLE_SID
+# Arguments:
+#   None
+# Returns:
+#   None
+#######################################
+sync_dryrun() {
+  rsync -avrP --delete ~/Desktop/lgcb/video/ ubuntu@web.mapan1984.me:~/media/lgcb --dry-run
+}
+
+sync_server() {
+  rsync -avrP --delete ~/Desktop/lgcb/video/ ubuntu@web.mapan1984.me:~/media/lgcb/
+}
+
+sync_dryrun
+
+echo -n "Want to sync? (Y/n): "
+read AAA
+if [[ ${AAA:-y} = "y" ]]; then
+  sync_server
+else
+  echo Nothing done, bye.
+fi

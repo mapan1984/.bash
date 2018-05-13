@@ -43,7 +43,7 @@ FULL_PATH="${YELLOW}\w"
 
 
 # Git state
-source ${HOME}/bin/git-prompt.sh
+source ${HOME}/.bin/git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
 GIT_STATE="${RED}\`__git_ps1 ' (%s)'\`${NORMAL}"
 

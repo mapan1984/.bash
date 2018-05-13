@@ -73,7 +73,7 @@ shopt -s globstar
 # fi
 #
 ## Git-Completion for bash
-source ${HOME}/bin/git-completion.bash
+source ${HOME}/.bin/git-completion.bash
 
 ################ History Options #################
 #
@@ -157,7 +157,7 @@ export TERM=xterm-256color
 #export GIT_PS1_SHOWDIRTYSTATE=1
 ## \u: username; \h: hostname; \w: path;
 #export PS1="\n""\e[1;36m\u\e[0m""@""\e[1;32m\h\e[0m"": ""\e[1;33m\W\e[0m""\e[1;31m\$(__git_ps1 ' (%s)')\e[0m""\n""$ "
-source ${HOME}/bin/prompt.sh
+source ${HOME}/.bin/prompt.sh
 
 ################# Aliases #################
 #
@@ -310,13 +310,13 @@ un=$(uname)
 
 if [[ ${un} =~ CYGWIN_NT-[\d.]* ]]; then
   # cygwin
-  source ~/bin/cygwin.sh;
+  source ~/.bin/cygwin.sh;
 elif [[ ${un} =~ Linux ]]; then
   # wsl
-  source ~/bin/wsl.sh;
+  source ~/.bin/linux.sh;
 elif [[ ${un} =~ MINGW(64|32)_NT-[\d.]* ]]; then
   # msys
-  source ~/bin/msys.sh;
+  source ~/.bin/msys.sh;
 else
   echo no match
 fi

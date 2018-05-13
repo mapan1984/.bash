@@ -9,8 +9,8 @@ fi
 
 # Set PATH so it includes user's private bin if it exists
 # User specific environment and startup programs
-if [ -d "${HOME}/bin" ] ; then
-  PATH="${PATH}:${HOME}/bin"
+if [ -d "${HOME}/.bin" ] ; then
+  PATH="${PATH}:${HOME}/.bin"
 fi
 
 # Python global pip install package
