@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# 输出文件hash，主要用于软件下载验证
+
+
+# Show how to use sig
+function show_usage() {
+  echo -e "\n$0 : Show hash code"
+  echo -e "Usage:\n\t$0 [Arguments] file\n"
+  echo "Arguments:"
+  echo -e "\t--help: Show this help message.";
+  echo -e "\t--md5: Show file's MD5 hash code.";
+  echo -e "\t--sha1: Show file's SHA-1 hash code.";
+  echo -e "\t--sha256: Show file's SHA-256 hash code.";
+  echo -e "\t--sha512: Show file's SHA-512 hash code.";
+}
+
+
+case $# in
+  0) show_usage; exit 1 ;;
+  1)
+    if [[ $1 == "--help" ]]; then
+      show_usage; exit 0;
+    else
+      show_usage; exit 1;
+    fi
+    ;;
+  2)
+    algo=$1
+    file=$2;
+    case $algo in
+      --md5)
+        python -c "import hashlib,sys;print hashlib.md5(open(sys.argv[1],'rb').read()).hexdigest()" $file ;;
+      --sha1)
+        python -c "import hashlib,sys;print hashlib.sha1(open(sys.argv[1],'rb').read()).hexdigest()" $file ;;
+      --sha256)
+        python -c "import hashlib,sys;print hashlib.sha256(open(sys.argv[1],'rb').read()).hexdigest()" $file ;;
+      --sha512)
+        python -c "import hashlib,sys;print hashlib.sha512(open(sys.argv[1],'rb').read()).hexdigest()" $file ;;
+      *)
+        show_usage; exit 1 ;;
+    esac
+    ;;
+esac
