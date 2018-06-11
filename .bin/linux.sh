@@ -1,5 +1,5 @@
 ### 链接到其他盘的目录
-if [ -d /mnt/c/ ]; then
+if [ -d /mnt/c/Windows ]; then
   # wsl
   export HARDDISK='/mnt/'
   export CODEDIR="${HARDDISK}c/Users/mapan/Code/"

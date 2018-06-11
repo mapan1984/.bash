@@ -1,0 +1,21 @@
+#!/bin/bash
+#
+# Sync project dir(current dir) to server host
+
+sync_dryrun() {
+  rsync -avrP --rsh="ssh -i /home/mapan/.ssh/mapan.pem" --delete $(pwd) ubuntu@web.mapan1984.me:~/ --dry-run
+}
+
+sync_server() {
+  rsync -avrP --rsh="ssh -i /home/mapan/.ssh/mapan.pem" --delete $(pwd) ubuntu@web.mapan1984.me:~/
+}
+
+sync_dryrun
+
+echo -n "Want to sync? (Y/n): "
+read AAA
+if [[ ${AAA:-y} = "y" ]]; then
+  sync_server
+else
+  echo Nothing done, bye.
+fi
