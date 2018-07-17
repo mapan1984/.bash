@@ -1,6 +1,7 @@
 .vscode
 .idea
 .*env
+.tmp
 .tern-project
 .ycm_extra_conf.py
 .flake8

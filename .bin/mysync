@@ -3,11 +3,11 @@
 # Sync project dir(current dir) to server host
 
 sync_dryrun() {
-  rsync -avrP --rsh="ssh -i /home/mapan/.ssh/mapan.pem" --delete $(pwd) ubuntu@web.mapan1984.me:~/ --dry-run
+  rsync -avrP --rsh="ssh -i /home/mapan/.ssh/mapan.pem" --exclude-from='/home/mapan/.rsyncignore' --delete $(pwd) ubuntu@web.mapan1984.me:~/ --dry-run
 }
 
 sync_server() {
-  rsync -avrP --rsh="ssh -i /home/mapan/.ssh/mapan.pem" --delete $(pwd) ubuntu@web.mapan1984.me:~/
+  rsync -avrP --rsh="ssh -i /home/mapan/.ssh/mapan.pem" --exclude-from='/home/mapan/.rsyncignore' --delete $(pwd) ubuntu@web.mapan1984.me:~/
 }
 
 sync_dryrun

@@ -14,6 +14,9 @@ alias tgz='tar zxvf'
 alias nhm='nethack -u mapan'
 alias install='sudo apt install'
 
+# 使用代理
+alias go='http_proxy=http://127.0.0.1:1080 https_proxy=http://127.0.0.1:1080 no_proxy=localhost,127.0.0.0/8,::1 go'
+
 # 常用文件地址别名
 source ~/.bin/paths.sh;
 
@@ -50,6 +53,7 @@ fi
 
 if [ -d "${CODEDIR}gowork" ]; then
   export GOPATH="${GOPATH}:${CODEDIR}gowork"
+  alias cdg="cd ${CODEDIR}gowork/src"
 fi
 
 # Setup for nodejs
@@ -70,3 +74,15 @@ fi
     exec tmux
 }
 ###
+
+
+# Java HOME
+# export JAVA_HOME=/usr/java/latest
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+# export PATH=$JAVA_HOME/bin:$PATH
+export PATH=/home/mapan/apache-maven-3.5.4/bin:$PATH
+
+
+# protocal buf
+export PATH=/usr/local/protoc-3.6.0/bin:$PATH
+
