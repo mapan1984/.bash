@@ -61,28 +61,62 @@ if [ -d /usr/local/node ]; then
   export PATH="/usr/local/node/bin:$PATH"
 fi
 
-### Use tmux
-[[ -z "$TMUX" && -n "$USE_TMUX" ]] && {
-    [[ -n "$ATTACH_ONLY" ]] && {
-        tmux a 2>/dev/null || {
-            cd && exec tmux
-        }
-        exit
-    }
+# Java HOME
+if [ -d /usr/local/java ]; then
+  export JAVA_HOME=/usr/local/java
+  export PATH=$JAVA_HOME/bin:$PATH
+fi
 
-    tmux new-window -c "$PWD" 2>/dev/null && exec tmux a
-    exec tmux
-}
+# Maven
+if [ -d /usr/local/maven ]; then
+  export PATH="/usr/local/maven/bin:$PATH"
+fi
+
+# protocal buf
+if [ -d /usr/local/protoc ]; then
+  export PATH="/usr/local/protoc/bin:$PATH"
+fi
+
+# gradle
+if [ -d /opt/gradle/gradle-4.9 ]; then
+  export PATH=$PATH:/opt/gradle/gradle-4.9/bin
+fi
+
+# sbt
+if [ -d /usr/local/sbt ]; then
+  export PATH="/usr/local/sbt/bin:$PATH"
+fi
+# scala
+if [ -d /usr/local/scala ]; then
+  export PATH="/usr/local/scala/bin:$PATH"
+fi
+
+
+### Use tmux
+#[[ -z "$TMUX" && -n "$USE_TMUX" ]] && {
+#    [[ -n "$ATTACH_ONLY" ]] && {
+#        tmux a 2>/dev/null || {
+#            cd && exec tmux
+#        }
+#        exit
+#    }
+#
+#    tmux new-window -c "$PWD" 2>/dev/null && exec tmux a
+#    exec tmux
+#}
 ###
 
 
-# Java HOME
-# export JAVA_HOME=/usr/java/latest
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-# export PATH=$JAVA_HOME/bin:$PATH
-export PATH=/home/mapan/apache-maven-3.5.4/bin:$PATH
+# fzf
+if [ -s "$HOME/.bin/bash_completion" ]; then
+  source "$HOME/.bin/bash_completion"
+fi
 
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# protocal buf
-export PATH=/usr/local/protoc-3.6.0/bin:$PATH
+export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build} --type f"
+export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O ansi {} || cat {}) 2> /dev/null | head -500'"
+
+# LS_COLORS
+#LS_COLORS=$LS_COLORS:'di=0;35:'; export LS_COLORS
 

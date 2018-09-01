@@ -33,7 +33,7 @@ program_exists() {
 
 lnif() {
     if [ -e "$1" ]; then
-        ln -sf "$1" "$2"
+        ln -srf "$1" "$2"
     fi
     ret="$?"
     debug
@@ -50,6 +50,7 @@ create_symlinks() {
     lnif "$source_path/.bashrc"            "$target_path/.bashrc"
 
     lnif "$source_path/.eslintrc.js"       "$target_path/.eslintrc.js"
+    lnif "$source_path/.prettierrc.js"     "$target_path/.prettierrc.js"
     lnif "$source_path/.flake8"            "$target_path/.flake8"
 
     lnif "$source_path/.gitconfig"         "$target_path/.gitconfig"

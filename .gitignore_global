@@ -6,4 +6,10 @@
 .ycm_extra_conf.py
 .flake8
 .tags
+.tags.lock
+.tags.temp
 .eslintrc.js
+.prettierrc.js
+
+node_modules
+packages-lock.json
