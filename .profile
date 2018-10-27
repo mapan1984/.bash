@@ -17,4 +17,17 @@ if [ -n "$BASH_VERSION" ]; then
 fi
 
 # set PATH so it includes user's private bin directories
-PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+if [ -d "${HOME}/bin" ] ; then
+  PATH="${PATH}:${HOME}/bin"
+fi
+
+# Set PATH so it includes user's private bin if it exists
+# User specific environment and startup programs
+if [ -d "${HOME}/.bin" ] ; then
+  PATH="${PATH}:${HOME}/.bin"
+fi
+
+# Python global pip install package
+if [ -d "${HOME}/.local/bin" ] ; then
+  PATH="${PATH}:${HOME}/.local/bin"
+fi

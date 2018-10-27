@@ -71,6 +71,10 @@ create_symlinks() {
       lnif "$source_path/.tmux.conf"       "$target_path/.tmux.conf"
     fi
 
+    if program_exists "gem"; then
+      lnif "$source_path/.gemrc"       "$target_path/.gemrc"
+    fi
+
     ret="$?"
     success "Setting up vim symlinks."
     debug

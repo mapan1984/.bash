@@ -73,7 +73,7 @@ shopt -s globstar
 # fi
 #
 ## Git-Completion for bash
-source ${HOME}/.bin/git-completion.bash
+source ${HOME}/.bin/completion/git-completion.bash
 
 ################ History Options #################
 #
@@ -157,7 +157,7 @@ export TERM=xterm-256color
 #export GIT_PS1_SHOWDIRTYSTATE=1
 ## \u: username; \h: hostname; \w: path;
 #export PS1="\n""\e[1;36m\u\e[0m""@""\e[1;32m\h\e[0m"": ""\e[1;33m\W\e[0m""\e[1;31m\$(__git_ps1 ' (%s)')\e[0m""\n""$ "
-source ${HOME}/.bin/prompt.sh
+source ${HOME}/.bin/prompt/prompt.sh
 
 ################# Aliases #################
 #
@@ -176,6 +176,7 @@ alias ls='ls -hF --color=tty'                # classify files in colour
 alias l='ls -CF'                              #
 alias ll='ls -l'                              # long list
 alias la='ls -A'                              # all but . and ..
+alias sl='ls'
 alias dir='ls --color=auto --format=vertical'
 alias vdir='ls --color=auto --format=long'
 alias wch='which -a'
@@ -205,7 +206,9 @@ alias du='du -h -a'
 # 查看函数，-s指定man的section, 2,3指的是Systen Call和Library Function
 alias see='man -s2,3'
 # 常用操作
-alias vi='vim'
+# alias vi='vim'
+# alias vi='nvim'
+# alias vim='nvim'
 # 常用文件地址
 alias bin='cd ~/bin'
 # alias vc='cd ~/.vim/'
@@ -231,7 +234,8 @@ alias vc='cd /mnt/c/Users/mapan/.vim/'
 #
 ### function settitle
 settitle() {
-  echo -ne "\e]2;$@\a\e]1;$@\a";
+  # echo -ne "\e]2;$@\a \e]1;$@\a";
+  echo -ne "\e]2;$*\a \e]1;$*\a";
 }
 
 ### function safe_rm
@@ -299,26 +303,45 @@ cd_func() {
 alias cd=cd_func
 
 #############
-# if [ -d /cygdrive ]; then
-#   source ~/bin/cygwin.sh;
-# elif [ -d /mnt ]; then
-#   source ~/bin/wsl.sh;
-# else
-#   source ~/bin/msys.sh;
-# fi
-
 un=$(uname)
 
-if [[ ${un} =~ CYGWIN_NT-[\d.]* ]]; then
-  # cygwin
-  source ~/.bin/cygwin.sh;
-elif [[ ${un} =~ Linux ]]; then
+if [[ ${un} =~ Linux ]]; then
   # wsl
   source ~/.bin/linux.sh;
 elif [[ ${un} =~ MINGW(64|32)_NT-[\d.]* ]]; then
   # msys
   source ~/.bin/msys.sh;
+elif [[ ${un} =~ CYGWIN_NT-[\d.]* ]]; then
+  # cygwin
+  source ~/.bin/cygwin.sh;
 else
-  echo no match
+  echo 'no match'
 fi
+
+# Set PATH so it includes user's private bin if it exists
+# User specific environment and startup programs
+if [ -d "${HOME}/.bin/bin" ] ; then
+  PATH="${PATH}:${HOME}/.bin/bin"
+fi
+
+# 登录脚本
+if [ -d "${HOME}/.bin/login" ] ; then
+  PATH="${PATH}:${HOME}/.bin/login"
+fi
+
+# Python global pip install package
+if [ -d "${HOME}/.local/bin" ] ; then
+  PATH="${PATH}:${HOME}/.local/bin"
+fi
+
+# Set MANPATH so it includes users' private man if it exists
+# if [ -d "${HOME}/man" ]; then
+#   MANPATH="${HOME}/man:${MANPATH}"
+# fi
+
+# Set INFOPATH so it includes users' private info if it exists
+# if [ -d "${HOME}/info" ]; then
+#   INFOPATH="${HOME}/info:${INFOPATH}"
+# fi
+
 #echo exit .bashrc
