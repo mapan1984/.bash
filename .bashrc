@@ -84,7 +84,7 @@ source ${HOME}/.bin/completion/git-completion.bash
 export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:l:ls:ls [a-zA-Z0-9_.*]*:cd:cd [a-zA-Z0-9_.*]*:mkdir [a-zA-Z0-9_.*]*:vi:vim'
 #
 # Whenever displaying the prompt, write the previous line to disk
-#export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 #
 # don't put duplicate lines or lines starting with space in the history.
 # export HISTCONTROL=ignoredups,ignorespace
@@ -209,10 +209,6 @@ alias see='man -s2,3'
 # alias vi='vim'
 # alias vi='nvim'
 # alias vim='nvim'
-# 常用文件地址
-alias bin='cd ~/bin'
-# alias vc='cd ~/.vim/'
-alias vc='cd /mnt/c/Users/mapan/.vim/'
 #
 ################ Umask ###############
 #

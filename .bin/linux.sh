@@ -3,10 +3,12 @@ if [ -d /mnt/c/Windows ]; then
   # wsl
   export HARDDISK='/mnt/'
   export CODEDIR="${HARDDISK}c/Users/mapan/Code/"
+  export WorkCODEDIR="${HARDDISK}c/Users/mapan/WorkCode/"
 else
   # real linux
   export HARDDISK="${HOME}/"
   export CODEDIR="${HARDDISK}Code/"
+  export WorkCODEDIR="${HARDDISK}WorkCode/"
 fi
 
 # 常用命令别名

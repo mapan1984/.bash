@@ -9,5 +9,11 @@ alias g="cd ${HARDDISK}g/"
 
 # 工作目录
 alias cde="cd ${CODEDIR}"
+alias cdwe="cd ${WorkCODEDIR}"
 alias alg="cd ${CODEDIR}algo/"
 alias blg="cd ${CODEDIR}mapan1984/"
+
+# 常用文件地址
+alias bin='cd ~/.bash'
+# alias vc='cd ~/.vim/'
+alias vc='cd /mnt/c/Users/mapan/.vim/'

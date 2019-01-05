@@ -1,0 +1,6 @@
+[submodule ".tmux/tmux-resurrect"]
+	path = .tmux/tmux-resurrect
+	url = https://github.com/tmux-plugins/tmux-resurrect.git
+[submodule ".tmux/tmux-yank"]
+	path = .tmux/tmux-yank
+	url = https://github.com/tmux-plugins/tmux-yank

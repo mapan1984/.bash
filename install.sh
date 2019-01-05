@@ -44,6 +44,7 @@ create_symlinks() {
     local target_path="$2"
 
     lnif "$source_path/.bin"               "$target_path/.bin"
+    lnif "$source_path/.tmux"              "$target_path/.tmux"
 
     lnif "$source_path/.bash_logout"       "$target_path/.bash_logout"
     lnif "$source_path/.bash_profile"      "$target_path/.bash_profile"
