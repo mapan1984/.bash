@@ -81,9 +81,7 @@ create_symlinks() {
     debug
 }
 
-# [ -z "$APP_PATH" ] && APP_PATH="$HOME/.bash"
-# [ -z "$APP_PATH" ] && APP_PATH="."
-[ -z "$APP_PATH" ] && APP_PATH=$(pwd)/.bash
+# [ -z "$APP_PATH" ] && APP_PATH=$(pwd)
+[ -z "$APP_PATH" ] && APP_PATH=$( cd "$(dirname "$0")" ; pwd -P )
 
-create_symlinks "$APP_PATH" \
-                "$HOME"
+create_symlinks "$APP_PATH" "$HOME"
