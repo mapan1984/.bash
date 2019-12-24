@@ -31,7 +31,7 @@ shopt -s nocaseglob
 # Make bash append rather than overwrite the history on disk
 shopt -s histappend
 # Put histroy command onto command line without executing it
-#shopt -s histverify
+shopt -s histverify
 #
 # When changing directory small typos can be ignored by bash
 # for example, cd /vr/lgo/apaache would find /var/log/apache
@@ -59,21 +59,29 @@ shopt -s globstar
 #
 # Uncomment to turn on programmable completion enhancements.
 # Any completions you add in ~/.bash_completion are sourced last.
-#[[ -f /etc/bash_completion ]] && . /etc/bash_completion
+[[ -f /etc/bash_completion ]] && . /etc/bash_completion
 #
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-# if ! shopt -oq posix; then
-#   if [ -f /usr/share/bash-completion/bash_completion ]; then
-#     . /usr/share/bash-completion/bash_completion
-#   elif [ -f /etc/bash_completion ]; then
-#     . /etc/bash_completion
-#   fi
-# fi
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
 #
 ## Git-Completion for bash
-source ${HOME}/.bin/completion/git-completion.bash
+if [ -f  ${HOME}/.bin/completion/git-completion.bash ]; then
+  source ${HOME}/.bin/completion/git-completion.bash
+fi
+
+## https://github.com/sio/bash-complete-partial-path
+if [ -s  ${HOME}/.bin/completion/bash_completion ]; then
+  source ${HOME}/.bin/completion/bash_completion
+  _bcpp --defaults
+fi
 
 ################ History Options #################
 #
