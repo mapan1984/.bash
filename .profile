@@ -31,3 +31,5 @@ fi
 if [ -d "${HOME}/.local/bin" ] ; then
   PATH="${PATH}:${HOME}/.local/bin"
 fi
+
+# export DISPLAY=:0.0

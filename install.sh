@@ -32,8 +32,15 @@ program_exists() {
 }
 
 lnif() {
-    if [ -e "$1" ]; then
-        ln -srf "$1" "$2"
+    src_path=$1
+    des_path=$2
+    back_dir=${APP_PATH}/back/$(date +"%Y-%m-%d-%T")
+    mkdir -p ${back_dir}
+    if [[ -e "${src_path}" ]]; then
+        if [[ -e "${des_path}" ]]; then
+          mv ${des_path} ${back_dir}
+        fi
+        ln -srf "${src_path}" "${des_path}"
     fi
     ret="$?"
     debug
@@ -58,10 +65,10 @@ create_symlinks() {
     lnif "$source_path/.gitignore"         "$target_path/.gitignore"
     lnif "$source_path/.gitignore_global"  "$target_path/.gitignore_global"
 
-    lnif "$source_path/.inputrc"           "$target_path/.inputrc"   
+    lnif "$source_path/.inputrc"           "$target_path/.inputrc"
 
     if program_exists "nethack"; then
-      lnif "$source_path/.nethackrc"         "$target_path/.nethackrc"
+      lnif "$source_path/.nethackrc"       "$target_path/.nethackrc"
     fi
 
     lnif "$source_path/.profile"           "$target_path/.profile"
@@ -73,11 +80,15 @@ create_symlinks() {
     fi
 
     if program_exists "gem"; then
-      lnif "$source_path/.gemrc"       "$target_path/.gemrc"
+      lnif "$source_path/.gemrc"           "$target_path/.gemrc"
+    fi
+
+    if program_exists "nvim"; then
+      lnif "$source_path/.config/nvim/init.vim"       "$target_path/.config/nvim/init.vim"
     fi
 
     ret="$?"
-    success "Setting up vim symlinks."
+    success "Setting up symlinks."
     debug
 }
 

@@ -7,4 +7,5 @@ function _fizzbuzz () {
   else                         COMPREPLY=($number)
   fi
 }
+
 complete -F _fizzbuzz fizzbuzz

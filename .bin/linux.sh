@@ -1,14 +1,19 @@
 ### 链接到其他盘的目录
 if [ -d /mnt/c/Windows ]; then
   # wsl
-  export HARDDISK='/mnt/'
-  export CODEDIR="${HARDDISK}c/Users/mapan/Code/"
-  export WorkCODEDIR="${HARDDISK}c/Users/mapan/WorkCode/"
+  export HARDDISK="/mnt/"
+  # windows_user=$(whoami.exe | awk -F '\' '{print $2}')
+  windows_user=${WINDOWS_USERNAME:-$(whoami)}
+  windows_home="${HARDDISK}c/Users/${windows_user}"
+  export CODEDIR="${HARDDISK}""c/Users/""${windows_user}""/Code/"
+  export WorkCODEDIR="${HARDDISK}c/Users/${windows_user}/OneDrive/"
+  export VimCODEDIR="${HARDDISK}c/Users/${windows_user}/.vim"
 else
   # real linux
   export HARDDISK="${HOME}/"
   export CODEDIR="${HARDDISK}Code/"
   export WorkCODEDIR="${HARDDISK}WorkCode/"
+  export VimCODEDIR="${HOME}/.vim"
 fi
 
 # 常用命令别名
